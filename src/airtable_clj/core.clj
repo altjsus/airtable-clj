@@ -46,7 +46,7 @@
                                   (if (keyword? v) (name v) v)]))
                           (into {}))
         http-options (cond-> {:headers (request-headers api-key)
-                              :throw-exceptions false
+                              :throw-exceptions true
                               :multi-param-style :array}
                        (seq query-params) (assoc :query-params query-params))
         response (http/get url http-options)

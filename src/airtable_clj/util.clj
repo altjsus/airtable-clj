@@ -4,8 +4,6 @@
             [environ.core :refer [env]])
   (:import [java.net URL]
            [java.text SimpleDateFormat]
-           [com.fasterxml.jackson.core JsonParseException]))
-
 (def api-version "0.1.0")
 (def project-version (env :airtable-clj-version))
 (def user-agent (str "airtable-clj/" project-version))
@@ -22,7 +20,7 @@
 
 (defn make-url
   ([{:keys [endpoint-url base table]}]
-   (let [base-url (URL. (or endpoint-url "https://api.airtable.com"))
+   (let [base-url (URL. (or endpoint-url "https://api.airtable.com/"))
          protocol (.getProtocol base-url)
          host (.getHost base-url)
          port (.getPort base-url)
